@@ -9,8 +9,20 @@
 #define BLOCK_DIM 1024
 #define PROGRAM "writer"
 
-int spawn(char program[], char* argument[])
+//! \file reader.c
+//! \author nicolis manfredotti
+//! \date 21/03/2024
+
+/*
+questa funzione crea un nuovo processo figlio eseguito in background
+non è presente su windows
+*/
+//! \fn spawn
+//! \brief creazione di un nuovo processo figlio
+//! \param[in] char program[], char* argument[]
+int spawn(char program[], char* argument[]) 
 {
+//! \var pid
  int pid;
  
  pid = fork ();
@@ -21,7 +33,7 @@ int spawn(char program[], char* argument[])
  execv(program, argument);
  abort();
 }
-
+//! \fn main
 int main(int argc, char* argv[])
 {
  FILE* file;
@@ -50,7 +62,9 @@ int main(int argc, char* argv[])
   return 0;
  }
  
- fifo = open("my_fifo", O_WRONLY);
+ fifo = open("my_fifo", O_WRONLY); //O_WRONLY è una costante usata nelle chiamate
+ //di apertura file
+ //il suo scopo è quello di evitare l'apertura accidentale di un file in lettura
  if (fifo < 0)
  {
   printf("Errore apertura FIFO\r\n");
