@@ -11,13 +11,22 @@
 //! \date 21/03/2024
 
 //! \fn main
+//! \brief copia dei dati del file nella pipe
+//! \var file 
+//! \brief file contenente i dati da scrivere nella pipe
+//! \var buffer
+//! \brief vettore contenente i dati da scrivere nella pipe
+//! \var fifo
+//! \brief contenuto dei dati presi dal file usato come pipe
+//! \var n
+//! \brief lunghezza del buffer
+//! \var argv
+//! \brief vettore con gli argomenti della riga di comando
 int main(int argc, char* argv[])
 {
  FILE* file;
  unsigned char buffer[BLOCK_DIM];
- //! \var n
  int n;
- //! \var fifo
  int fifo;
  
  if (argc != 2)
